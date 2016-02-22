@@ -23,6 +23,12 @@
     self.joystick.continuous = YES;
     self.joystick.wrapAround = YES;
     [self.joystick setThumbColor:[UIColor brownColor]];
+    [self.joystick addTarget:self action:@selector(positionChanged:) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void)positionChanged:(RSJoystick *)sender {
+    NSLog(@"value: %f", sender.value);
+    NSLog(@"angle: %f", sender.angle);
 }
 
 @end

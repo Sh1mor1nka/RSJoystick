@@ -4,7 +4,7 @@
 	Created by Nathan Day on 7.07.2011 as NDRotator under a MIT-style license.
 	Copyright (c) 2011 Nathan Day
 
-    Forked by Roman Simenok on 25.12.2015 renamed to RSJoystick under a MIT-style license.
+	Forked by Roman Simenok on 25.12.2015 renamed to RSJoystick under a MIT-style license.
 	Copyright (c) 2015 Roman Simenok
  
 	Permission is hereby granted, free of charge, to any person obtaining a copy
