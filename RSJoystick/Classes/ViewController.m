@@ -28,7 +28,9 @@
 
 -(void)positionChanged:(RSJoystick *)sender {
     NSLog(@"value: %f", sender.value);
+    NSLog(@"radius: %f", sender.radius);
     NSLog(@"angle: %f", sender.angle);
+    NSLog(@"cartesian: %@", NSStringFromCGPoint(sender.cartesianPoint));
 }
 
 @end

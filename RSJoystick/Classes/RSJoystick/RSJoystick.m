@@ -29,38 +29,74 @@
 #import "RSJoystick.h"
 
 @interface RSJoystick () {
-	UIImage * cachedBodyImage,
-			* cachedHilightedBodyImage,
-			* cachedThumbImage,
-			* cachedHilightedThumbImage;
+	UIImage *cachedBodyImage,
+			*cachedHilightedBodyImage,
+			*cachedThumbImage,
+			*cachedHilightedThumbImage;
     CGFloat centerCoord;
 }
 
-@property (nonatomic) CGFloat touchDownAngle,
-								touchDownYLocation;
-@property (nonatomic, readonly) UIImage * cachedBodyImage,
-                                        * cachedHilightedBodyImage,
-                                        * cachedThumbImage,
-                                        * cachedHilightedThumbImage;
+@property (nonatomic) CGFloat touchDownAngle, touchDownYLocation;
+@property (nonatomic, readonly) UIImage *cachedBodyImage,
+                                        *cachedHilightedBodyImage,
+                                        *cachedThumbImage,
+                                        *cachedHilightedThumbImage;
 
 @end
 
 @implementation RSJoystick
 
-#pragma mark - manually implemented properties
+#pragma mark - Init
+
+-(instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self defaultInit];
+    }
+    
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if(self = [super initWithCoder:aDecoder]) {
+        [self defaultInit];
+    }
+    
+    return self;
+}
+
+-(void)defaultInit {
+    centerCoord = MIN(self.bounds.size.width/2, self.bounds.size.height/2);
+    self.radius = 1.0;
+    self.minimumValue = 0.0;
+    self.maximumValue = 1.0;
+    self.minimumDomain = 0.0*M_PI;
+    self.maximumDomain = 2.0*M_PI;
+    self.continuous = YES;
+    self.wrapAround = YES;
+    self.thumbColor = [UIColor cyanColor];
+    [self setLocation:CGPointMake(centerCoord, centerCoord)];
+}
+
+#pragma mark - Getters;
 
 - (CGFloat)radius {
     return _radius;
 }
 
 - (CGPoint)cartesianPoint {
-    return CGPointMake(cos(self.angle)*self.radius, sin(self.angle)*self.radius);
+    return CGPointMake(cos(self.angle)*self.radius, -sin(self.angle)*self.radius);
 }
 
 - (CGPoint)constrainedCartesianPoint {
 	CGFloat theRadius = constrainValue(self.radius, 0.0, 1.0);
 	return CGPointMake(cos(self.angle)*theRadius, sin(self.angle)*theRadius);
 }
+
+- (CGFloat)value {
+    return mapValue(self.angle, self.minimumDomain, self.maximumDomain, self.minimumValue, self.maximumValue);
+}
+
+#pragma mark - Setters
 
 - (void)setCartesianPoint:(CGPoint)aPoint {
 	CGFloat thePreviousAngle = self.angle,
@@ -81,21 +117,17 @@
 	self.radius = sqrt(aPoint.x*aPoint.x + aPoint.y*aPoint.y);
 }
 
-- (CGFloat)value {
-    return mapValue(self.angle, self.minimumDomain, self.maximumDomain, self.minimumValue, self.maximumValue);
-}
-
 - (void)setValue:(CGFloat)aValue {
 	CGFloat theMinium = self.minimumValue,
            theMaximum = self.maximumValue;
 
-    self.angle = mapValue(constrainValue( self.angle, self.minimumValue, self.maximumDomain), theMinium, theMaximum, self.minimumValue, self.maximumDomain );
+    self.angle = mapValue(constrainValue(self.angle, self.minimumValue, self.maximumDomain), theMinium, theMaximum, self.minimumValue, self.maximumDomain);
 }
 
 - (void)setAngle:(CGFloat)anAngle {
 	_angle = self.wrapAround != NO
-			? wrapValue( anAngle, self.minimumDomain, self.maximumDomain )
-			: constrainValue( anAngle, self.minimumDomain, self.maximumDomain );
+			? wrapValue(anAngle, self.minimumDomain, self.maximumDomain)
+			: constrainValue(anAngle, self.minimumDomain, self.maximumDomain);
 }
 
 -(void)setThumbColor:(UIColor *)thumbColor {
@@ -103,39 +135,7 @@
     [self deleteThumbCache];
 }
 
-#pragma mark - Creation
-
--(instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        [self defaultInit];
-    }
-    
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-	if(self = [super initWithCoder:aDecoder]) {
-        [self defaultInit];
-	}
-
-	return self;
-}
-
--(void)defaultInit {
-    centerCoord = MIN(self.bounds.size.width/2, self.bounds.size.height/2);
-    self.radius = 1.0;
-    self.linearSensitivity = 0.05;
-    self.minimumValue = 0.0;
-    self.maximumValue = 1.0;
-    self.minimumDomain = 0.0*M_PI;
-    self.maximumDomain = 2.0*M_PI;
-    self.continuous = YES;
-    self.wrapAround = YES;
-    self.thumbColor = [UIColor cyanColor];
-    [self setLocation:CGPointMake(centerCoord, centerCoord)];
-}
-
-#pragma mark - UIControl
+#pragma mark - Touch Events
 
 - (UIControlEvents)allControlEvents {
     return UIControlEventValueChanged;

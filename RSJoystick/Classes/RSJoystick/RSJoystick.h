@@ -112,17 +112,10 @@ Contains the maximum <angle> of the receiver.
 The default value of this property is 2.0pi.
 */
 @property (nonatomic) CGFloat maximumDomain;
-/**
-Contains the value used to determin how vertical movement is mapped to angular movement of the control when the style is <RSJoystickStyleLinear>.
-The <angle> is propertional to y-value * <linearSensitivity>.
-The default value of this property is 0.05.
- */
 
 /**
 	@name Modifying the Rotator’s Behavior
  */
-@property (nonatomic) CGFloat linearSensitivity;
-
 /**
 Contains the boolean used to determine how the rotator behaves when the user reaches <minimumDomain> or <maximumDomain>.
 
