@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		30B33CDC1C2D975400527950 /* RSJoystick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSJoystick.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B33CDC1C2D975400527950 /* RSJoystickExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSJoystickExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B33CE01C2D975400527950 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		30B33CE21C2D975400527950 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		30B33CE31C2D975400527950 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		30B33CD31C2D975400527950 = {
 			isa = PBXGroup;
 			children = (
-				30B33CDE1C2D975400527950 /* RSJoystick */,
+				30B33CDE1C2D975400527950 /* RSJoystickExample */,
 				30B33CDD1C2D975400527950 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,12 +53,12 @@
 		30B33CDD1C2D975400527950 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				30B33CDC1C2D975400527950 /* RSJoystick.app */,
+				30B33CDC1C2D975400527950 /* RSJoystickExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		30B33CDE1C2D975400527950 /* RSJoystick */ = {
+		30B33CDE1C2D975400527950 /* RSJoystickExample */ = {
 			isa = PBXGroup;
 			children = (
 				30B33CF61C2D993100527950 /* Classes */,
@@ -68,7 +68,7 @@
 				30B33CE31C2D975400527950 /* AppDelegate.m */,
 				30B33CDF1C2D975400527950 /* Supporting Files */,
 			);
-			path = RSJoystick;
+			path = RSJoystickExample;
 			sourceTree = "<group>";
 		};
 		30B33CDF1C2D975400527950 /* Supporting Files */ = {
@@ -97,15 +97,16 @@
 				30B33CF81C2D993100527950 /* RSJoystick.h */,
 				30B33CF91C2D993100527950 /* RSJoystick.m */,
 			);
-			path = RSJoystick;
+			name = RSJoystick;
+			path = ../../RSJoystick;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		30B33CDB1C2D975400527950 /* RSJoystick */ = {
+		30B33CDB1C2D975400527950 /* RSJoystickExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 30B33CF31C2D975400527950 /* Build configuration list for PBXNativeTarget "RSJoystick" */;
+			buildConfigurationList = 30B33CF31C2D975400527950 /* Build configuration list for PBXNativeTarget "RSJoystickExample" */;
 			buildPhases = (
 				30B33CD81C2D975400527950 /* Sources */,
 				30B33CD91C2D975400527950 /* Frameworks */,
@@ -115,9 +116,9 @@
 			);
 			dependencies = (
 			);
-			name = RSJoystick;
+			name = RSJoystickExample;
 			productName = RSJoystick;
-			productReference = 30B33CDC1C2D975400527950 /* RSJoystick.app */;
+			productReference = 30B33CDC1C2D975400527950 /* RSJoystickExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -131,10 +132,11 @@
 				TargetAttributes = {
 					30B33CDB1C2D975400527950 = {
 						CreatedOnToolsVersion = 7.2;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
-			buildConfigurationList = 30B33CD71C2D975400527950 /* Build configuration list for PBXProject "RSJoystick" */;
+			buildConfigurationList = 30B33CD71C2D975400527950 /* Build configuration list for PBXProject "RSJoystickExample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -147,7 +149,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				30B33CDB1C2D975400527950 /* RSJoystick */,
+				30B33CDB1C2D975400527950 /* RSJoystickExample */,
 			);
 		};
 /* End PBXProject section */
@@ -285,7 +287,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = RSJoystick/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/RSJoystickExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.RSJoystick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -296,7 +299,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = RSJoystick/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/RSJoystickExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.RSJoystick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -306,7 +310,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		30B33CD71C2D975400527950 /* Build configuration list for PBXProject "RSJoystick" */ = {
+		30B33CD71C2D975400527950 /* Build configuration list for PBXProject "RSJoystickExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				30B33CF11C2D975400527950 /* Debug */,
@@ -315,7 +319,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		30B33CF31C2D975400527950 /* Build configuration list for PBXNativeTarget "RSJoystick" */ = {
+		30B33CF31C2D975400527950 /* Build configuration list for PBXNativeTarget "RSJoystickExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				30B33CF41C2D975400527950 /* Debug */,
